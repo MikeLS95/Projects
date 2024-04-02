@@ -4,17 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Intro</title>
+    <style>
+    p, h1 { 
+        color: #2a920b; 
+        background-color: yellow;
+    }
+
+    h1 {color: red;
+    }
+
+    #hobbies {
+        border: 3px solid green;
+    }
+
+    /*this makes listed hobbies red*/
+    #hobbies li {
+        color: red
+    }
+
+    .green-border {
+        border: 3px solid green;
+    }
+
+    .big {
+        font-size: 2rem;
+    }
+
+    p a {
+        padding: 1rem;
+        background: lightblue;
+    }
+    </style>
 </head>
 <body>
     <h1>Heading 1</h1>
     <h2>Heading 2</h2>
     <h3>Heading 3</h3>
-    <p>This is a paragraph</p>
+    <p class="big">This is a paragraph</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque dolorem ipsa, fugiat dignissimos repudiandae quasi laboriosam ipsam nam? Doloremque eum eligendi neque quaerat illum, sit qui saepe voluptatum sequi unde.</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptatibus?</p>
-    <img src="https://picsum.photos/300" alt="Random placeholder photo">
+    <img src="https://picsum.photos/200" alt="Random placeholder photo">
+
+        <a class="big green-border" href="https://google.com/">Go to Google!</a>
     <p>
-        <a href="https://google.com/">Go to Google!</a>
+        <a href="second.html">Second Page</a>
     </p>
+    <ul id="hobbies">
+        <li>Gaming</li>
+        <li>Guitar</li>
+        <li>Snowboarding</li>
+    </ul>
+    <ol>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ol>
 </body>
 </html>
