@@ -1,0 +1,69 @@
+article {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+article > * {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  color: black;
+}
+
+nav {
+  background-color: #5995DA;
+  height: 15vh;
+}
+
+header {
+  background-color: #B2D6FF;
+}
+
+main {
+  background-color: #EAEDF0;
+  height: 100vh;
+}
+
+#sign-up {
+  background-color: #D6E9FE;
+}
+
+#feature-1 {
+  background-color: #F5CF8E;
+}
+
+#feature-2 {
+  background-color: #F09A9D;
+}
+
+#feature-3 {
+  background-color: #C8C6FA;
+}
+
+@media only screen and (min-width: 500px) and (max-width: 899px) {
+ .square-grid{
+    flex: 50%;
+    height: 50vw;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+ .feature {
+  flex: 1;
+  height: calc(1.25 * (100vw / 3))
+ }
+ #sign-up {
+  order: 1;
+  height: 25vw;
+ }
+ main {
+  order: 2;
+ }
+ header {
+  height: 75vh;
+ }
+}
