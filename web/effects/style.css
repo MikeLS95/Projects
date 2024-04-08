@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes two-colors {
+    0% {
+        background: salmon;
+    }
+    50% {
+        background: yellow;
+    }
+    100% {
+        background: blue;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    background-color: salmon;
+    transition: transform 1s;
+    /* animation: spin 3s infinite linear;  */
+    /* transform: translateX(-75%); */
+}
+
+div:hover {
+    animation: two-colors 2s both alternate;
+    transform:scale(1.5) rotate(180deg);
+    /* height: 200px;
+    background: blue; */
+}
+
