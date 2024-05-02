@@ -1,0 +1,17 @@
+[
+    {
+        "item": "Cappuccino",
+        "size": "medium",
+        "price": 5.0
+    },
+    {
+        "item": "Latte",
+        "size": "large",
+        "price": 7.0
+    },
+    {
+        "item": "Eggs Benedict",
+        "size": "single",
+        "price": 17.5
+    }
+]

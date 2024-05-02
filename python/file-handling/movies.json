@@ -1,0 +1,48 @@
+[
+    {
+        "title": "The Shawshank Redemption",
+        "director": "Frank Darabont",
+        "stars": [
+            "Morgan Freeman",
+            "Tim Robbins",
+            "Clancy Brown",
+            "Bob Gunton"
+        ],
+        "box_office": {
+            "budget": 25000000,
+            "us_gross": 28767189,
+            "worldwide_gross": 28884504
+        }
+    },
+    {
+        "title": "The Lord of the Rings: The Return of the King",
+        "director": "Peter Jackson",
+        "stars": [
+            "Elijah Wood",
+            "Viggo Mortensen",
+            "Ian McKellen",
+            "Cate Blanchett"
+        ],
+        "box_office": {
+            "budget": 94000000,
+            "us_gross": 378251207,
+            "worldwide_gross": 1146436214
+        }
+    },
+    {
+        "title": "Inception",
+        "director": "Christopher Nolan",
+        "stars": [
+            "Leonardo DiCaprio",
+            "Michael Caine",
+            "Marion Cotillard",
+            "Tom Hardy",
+            "Ken Watanabe"
+        ],
+        "box_office": {
+            "budget": 94000000,
+            "us_gross": 378251207,
+            "worldwide_gross": 1146436214
+        }
+    }
+]
