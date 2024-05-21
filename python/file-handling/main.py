@@ -39,17 +39,17 @@ menu = [
 
 import json, random
 
-# with open('movies.json') as f:
-#     movies = json.load(f)
-#     m = movies[2]
-#     print(f"{m['title']} was directed by {m['director']} and stars {random.choice (m['stars'])}")
+with open('movies.json') as f:
+    movies = json.load(f)
+    m = movies[2]
+    print(f"{m['title']} was directed by {m['director']} and stars {random.choice (m['stars'])}")
 
-# with open('menu.json', 'w') as f:
-#     json.dump(menu, f, indent=4)
+with open('menu.json', 'w') as f:
+    json.dump(menu, f, indent=4)
 
 
-result = json.dumps(menu, indent=4)
+# result = json.dumps(menu, indent=4)
 
-new_menu = json.loads(result)
+# new_menu = json.loads(result)
 
-print(new_menu[0])
+# print(new_menu[0])

@@ -92,7 +92,7 @@ class Chest:
     """
     Represents a lootable chest of items and/or gold.
     """
-    def __init__ (self, items=[], gold=0, locked=False):
+    def __init__(self, items=[], gold=0, locked=False):
         self.inv = Inventory(gold, items) # Composition
         self.locked = locked
 
