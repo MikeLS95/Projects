@@ -19,7 +19,7 @@ create table items (
     -- category is now optional ("not null" constraint removed)
     category_id integer,
 
-    foreign key (category_id) references categories (id)
+    foreign key (category_id) references categories (id) on delete cascade
 );
 
 insert into categories (name, description) values 
