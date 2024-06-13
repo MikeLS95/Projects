@@ -1,10 +1,10 @@
 from flask import Blueprint
-# from auth import admin_only
 from datetime import timedelta
 from flask import request
 from flask_jwt_extended import create_access_token
 from init import db, bcrypt
 from models.user import User, UserSchema
+from auth import admin_only
 
 
 users_bp = Blueprint('users', __name__, url_prefix='/users')
@@ -13,9 +13,9 @@ users_bp = Blueprint('users', __name__, url_prefix='/users')
 @users_bp.route('/login', methods=['POST'])
 def login():
     # Get the email and the password from the request
-    params = UserSchema(only=['email', 'password']).load(
-        request.json, unknown="exclude"
-    )
+    params = UserSchema(only=['email', 'password']).load(request.json, unknown="exclude")
+
+
     # email = request.json['email']
     # password = request.json['password']
     # [email, password] = request.json
@@ -30,3 +30,10 @@ def login():
     else:
         # Error handling for wrong email/password (user not found)
         return {'ERROR' : 'Invalid email or password'}, 401
+    
+
+@users_bp.route('/', methods=['POST'])
+@admin_only
+def create_user():
+    params = UserSchema(only=['email', 'password', 'name', 'is_admin']).load(request.json)
+    return params

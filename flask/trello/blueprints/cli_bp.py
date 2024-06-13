@@ -27,26 +27,31 @@ def db_create():
         )
     ]
 
+    db.session.add_all(users)
+    db.session.commit()
+
     cards = [
             Card(
                 title='Start the project', 
                 description='Stage 1 - Create ERD', 
-                date_created=date.today()
+                date_created=date.today(),
+                user=users[0]
             ),
             Card(
                 title='ORM Queries', 
                 description='Stage 2 - Implement CRUD', 
-                date_created=date.today()
+                date_created=date.today(),
+                user=users[1]
             ),
             Card(
                 title='Marshmallow', 
                 description='Stage 3 - Implement JSONify of models', 
                 date_created=date.today(),
+                user=users[0]
             ),
     ]
 
-    db.session.add_all(users)
     db.session.add_all(cards)
-
     db.session.commit()
+
     print('Users and Cards added')

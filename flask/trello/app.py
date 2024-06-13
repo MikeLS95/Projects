@@ -23,12 +23,12 @@ def not_found(err):
 
 @app.errorhandler(ValidationError)
 def invalid_request(err):
-    return {'ERROR': vars(err)}
+    return {'ERROR': vars(err)["messages"]}, 400
 
 
 @app.errorhandler(KeyError)
 def missing_key(err):
-    return {'ERROR': str(err)}
+    return {'ERROR': f"Missing field: {str(err)}"}, 400
 
 
 print(app.url_map)
