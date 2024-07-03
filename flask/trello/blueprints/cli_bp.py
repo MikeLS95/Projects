@@ -17,13 +17,13 @@ def db_create():
     users = [
         User(
             email='admin@spam.com', 
-            password=bcrypt.generate_password_hash('123').decode('utf8'), 
+            password=bcrypt.generate_password_hash('123456').decode('utf8'), 
             is_admin=True
         ),
         User(
             email='user@spam.com', 
             name='User', 
-            password=bcrypt.generate_password_hash('123').decode('utf8')
+            password=bcrypt.generate_password_hash('123456').decode('utf8')
         )
     ]
 
