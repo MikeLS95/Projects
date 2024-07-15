@@ -20,7 +20,7 @@
 // condition: will be tested before every iteration
 // post-iteration: will be evaluated after every iteration
 
-// for (initializer; condition post-iteration) {}
+// for (initializer; condition, post-iteration) {}
 
 // for (let i=0; i < 10; ++i) {
 //     console.log(i)
