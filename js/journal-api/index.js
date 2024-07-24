@@ -1,26 +1,6 @@
 import express from 'express'
-import mongoose from 'mongoose'
-import dotenv from 'dotenv'
-
-dotenv.config()
-
-const categories = ['Food', 'Gaming', 'Coding', 'Other']
-
-const entries = [
-    { id: 1, category: 'Food', content: 'Pizza is yummy!' },
-    { id: 2, category: 'Coding', content: 'Coding is fun!' },
-    { id: 3, category: 'Gaming', content: 'War. War never changes.' }
-]
-
-mongoose.connect(process.env.DB_URI)
-    .then(m => console.log(m.connection.readyState == 1 ? 'Mongoose connected' : 'Mongoose failed to connect'))
-    .catch(err => console.error(err))
-
-const Entry = mongoose.model('Entry', {
-    category: {type: String, required: true},
-    content: {type: String, required: true}
-
-})
+// import mongoose from 'mongoose'
+import { Entry, Category } from './db.js'
 
 const app = express()
 
@@ -33,16 +13,23 @@ app.use(express.json())
 //     return {'info': 'Journal API'}
 app.get('/', (request, response) => response.send({ info: 'Journal API!!' }))
 
-app.get('/categories', (req, res) => res.send(categories))
+app.get('/categories', async (req, res) => res.send(await Category.find()))
 
-app.get('/entries', (req, res) => res.send(entries))
+// Retrieve all entries
+app.get('/entries', async (req, res) => res.send(await Entry.find()))
 
-app.get('/entries/:id', (req, res) => {
-    const entry = entries.filter(e => e.id == req.params)
-    if (matchingEntries.length == 1) {
-        res.send(matchingEntries[0])
-    } else {
-        res.status(404).send({ error: 'Not found' })
+// Retrieve one entry
+app.get('/entries/:id', async (req, res) => {
+    try {
+        const entry = await Entry.findById(req.params.id) 
+        if (entry) {
+            res.send(entry)
+        } else {
+            res.status(404).send({ error: 'Entry not found' })
+        }
+    }
+    catch (err) {
+        res.status(400).send({ error: err.message})
     }
 })
 
@@ -64,6 +51,38 @@ app.post('/entries', async (req, res) => {
     }
 })
 
+
+// Update and entry
+app.put('/entries/:id', async (req, res) => {
+    try {
+        const entry = await Entry.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after' }) 
+        if (entry) {
+            res.send(entry)
+        } else {
+            res.status(404).send({ error: 'Entry not found' })
+        }
+    }
+    catch (err) {
+        res.status(400).send({ error: err.message})
+    }
+})
+
+// Delete and entry
+app.delete('/entries/:id', async (req, res) => {
+    try {
+        const entry = await Entry.findByIdAndDelete(req.params.id) 
+        if (entry) {
+            res.sendStatus(200)
+        } else {
+            res.status(404).send({ error: 'Entry not found' })
+        }
+    }
+    catch (err) {
+        res.status(400).send({ error: err.message})
+    }
+})
+
+// Start Server
 app.listen(4001, err => {
     if (err) {
         console.error(err)
