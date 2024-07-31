@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react'
 
-const BitcoinIndex = () => {
+const BitcoinIndex = ({ currency }) => {
   const [price, setPrice] = useState(0)
 
-  // will be triggered every update
-  useEffect(() => console.log('effect triggered'))
+  // All useEffects will be triggered on mount
+
+  //
+  //
+
+  //
+  //
 
   // will be triggered if any of the dependencies change
   useEffect(() => {
     console.log('Fetching...')
-    fetch('https://api.coindesk.com/v1/bpi/currentprice/AUD.json')
+    fetch(`https://api.coindesk.com/v1/bpi/currentprice/${currency}.json`)
       .then(res => res.json())
-      .then(data => setPrice(data.bpi.AUD.rate))
-  }, [])
+      .then(data => setPrice(data.bpi[currency].rate))
+  }, [currency])
 
-
-
-
-  return <h2>Current Price (AUD): {price}</h2>
+  return <h2>Current Price ({currency}): {price}</h2>
 }
 
 export default BitcoinIndex
